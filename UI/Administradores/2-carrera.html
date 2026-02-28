@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Carreras - Administración</title>
+    <link rel="icon" href="img/favicon.ico" type="image/ico">
+
+    <link rel="stylesheet" href="css/2-carrera.css">
+</head>
+<body>
+    <div class="form-container">
+        
+        <!-- Banner -->
+        <img src="img/banner.jpg" alt="Banner principal" class="banner">
+
+        <h2>Gestión de Carreras</h2>
+        <hr>
+        <p style="font-weight: bold;">Seleccione una acción.</p>
+
+        <!-- Menú horizontal -->
+        <div id="carrerasMenu" style="display:flex; justify-content:space-between; gap:8px; margin-bottom:20px;">
+            <button id="btnInsertar">Insertar</button>
+            <button id="btnModificar">Modificar</button>
+            <button id="btnEliminar">Eliminar</button>
+            <button id="btnListar">Listar</button>
+        </div>
+
+        <hr>
+
+        <!-- 1) Formulario Insertar -->
+        <div id="panelInsertar" class="panel" style="display:none;">
+            <h3>Insertar nueva carrera</h3>
+            <hr>
+            <form id="formInsertar">
+                <label for="insNombre">Nombre de la carrera</label>
+                <input id="insNombre" type="text" placeholder="Ingrese nombre" required>
+
+                <label for="insTurno">Turno</label>
+                <input id="insTurno" type="text" placeholder="Mañana / Tarde / Vespertino" required>
+
+                <label for="insPlan">Plan de estudio</label>
+                <input id="insPlan" type="text" placeholder="Ingrese plan de estudio" required>
+
+                <button type="submit" id="btnGuardarInsert">Guardar</button>
+                <button type="button" id="btnCancelarInsert">Cancelar</button>
+            </form>
+        </div>
+
+        <!-- 2) Panel Modificar -->
+        <div id="panelModificar" class="panel" style="display:none;">
+            <h3>Modificar carrera</h3>
+            <hr>
+            <p>Primero seleccione la carrera de la lista y luego presione <strong>Aceptar</strong>.</p>
+
+            <div id="modListContainer" class="list-container"></div>
+
+            <div style="display:flex; gap:10px; margin-top:12px;">
+                <button id="btnAceptarModificar">Aceptar</button>
+                <button id="btnCancelarModificar">Cancelar</button>
+            </div>
+
+            <div id="modFormContainer" style="display:none; margin-top:16px;">
+                <h4>Editar carrera seleccionada</h4>
+                <form id="formModificar">
+                    <input id="modId" type="hidden">
+
+                    <label for="modNombre">Nombre</label>
+                    <input id="modNombre" type="text" required>
+
+                    <label for="modTurno">Turno</label>
+                    <input id="modTurno" type="text" required>
+
+                    <label for="modPlan">Plan de estudio</label>
+                    <input id="modPlan" type="text" required>
+
+                    <button type="submit" id="btnGuardarMod">Guardar cambios</button>
+                    <button type="button" id="btnCancelarEdicion">Cancelar</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- 3) Panel Eliminar -->
+        <div id="panelEliminar" class="panel" style="display:none;">
+            <h3>Eliminar carrera</h3>
+            <hr>
+            <p>Seleccione la carrera a eliminar y luego presione <strong>Aceptar</strong>. Después confirme.</p>
+
+            <div id="delListContainer" class="list-container"></div>
+
+            <div style="display:flex; gap:10px; margin-top:12px;">
+                <button id="btnAceptarEliminar">Aceptar</button>
+                <button id="btnCancelarEliminar">Cancelar</button>
+            </div>
+
+            <div id="delConfirmContainer" style="display:none; margin-top:12px;">
+                <p id="delConfirmText"></p>
+                <button id="btnConfirmDelete">Confirmar eliminación</button>
+                <button id="btnCancelDelete">Cancelar</button>
+            </div>
+        </div>
+
+        <!-- 4) Panel Listar -->
+        <div id="panelListar" class="panel" style="display:none;">
+            <h3>Listado de carreras</h3>
+            <hr>
+
+            <div id="tablaContainer" class="table-wrapper"></div>
+
+            <div style="margin-top:10px;">
+                <button id="btnRefrescar">Refrescar</button>
+                <button id="btnCerrarList">Cerrar</button>
+            </div>
+        </div>
+
+        <hr>
+        <a href="menu.html" id="btn-volver">Volver al menú</a>
+
+
+        <p>Creado por los alumnos de Tercer año de la TSAS en el 2025.</p>
+        <p>© Todos los derechos reservados.</p>
+    </div>
+
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+    <script src="Carreras/CarrerasApi.js"></script>
+    <script src="Carreras/CarrerasUI.js"></script>
+    <script src="Carreras/Carreras.js"></script>
+
+</body>
+</html>
