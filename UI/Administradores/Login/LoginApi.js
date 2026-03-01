@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5131/login";
+const API_URL = "https://proyectogeneral.onrender.com/login";
 
 async function login(usuario, contraseña) {
     const response = await axios.post(API_URL, {

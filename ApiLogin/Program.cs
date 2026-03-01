@@ -24,6 +24,7 @@ public class Program
 
         var app = builder.Build();
 
+        // Swagger 
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();
@@ -41,6 +42,7 @@ public class Program
 
         var loginService = app.Services.GetRequiredService<ILoginService>();
 
+        // Endpoint /login
         app.MapPost("/login", async (Admin admin) =>
         {
             var resultado = await loginService.LoginAsync(admin.Admin_Nom_Usuario, admin.Admin_Contra);
@@ -61,7 +63,9 @@ public class Program
             }, statusCode: resultado.Codigo);
         });
 
-        app.Run();
+        // Puerto dinámico de Render
+        var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+        app.Run($"http://0.0.0.0:{port}");
     }
 }
 
