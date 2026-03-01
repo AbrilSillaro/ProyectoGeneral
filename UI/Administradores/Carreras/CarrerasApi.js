@@ -1,4 +1,4 @@
-const API_BASE = "https://proyectogeneral.onrender.com/Carreras";
+const API_BASE = "https://apicarreras.onrender.com/Carreras";
 
 async function getCarreras() {
     const resp = await axios.get(API_BASE);
