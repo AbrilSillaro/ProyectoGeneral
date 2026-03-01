@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:5015/carreras";
+const API_BASE = "https://proyectogeneral.onrender.com/Carreras";
 
 async function getCarreras() {
     const resp = await axios.get(API_BASE);

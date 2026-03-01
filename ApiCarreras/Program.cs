@@ -31,12 +31,8 @@ namespace ApiCarreras
 
             var app = builder.Build();
 
-            
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+            app.UseSwagger();
+            app.UseSwaggerUI();
 
             app.UseHttpsRedirection();
             app.UseAuthorization();
@@ -119,7 +115,9 @@ namespace ApiCarreras
             });
 
 
-            app.Run();
+            // Puerto dinámico de Render
+            var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+            app.Run($"http://0.0.0.0:{port}");
         }
     }
 }
